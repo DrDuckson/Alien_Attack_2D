@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhcm6buuv3e7o"]
+
+[ext_resource type="Texture2D" uid="uid://m7owkv3k60kt" path="res://assets/textures/bg.png" id="1_2ptmd"]
+[ext_resource type="Script" path="res://scripts/moving_background.gd" id="1_lcsna"]
+
+[node name="MovingBackground" type="ParallaxBackground"]
+script = ExtResource("1_lcsna")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1157, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer"]
+texture_repeat = 2
+offset_right = 1157.0
+offset_bottom = 653.0
+texture = ExtResource("1_2ptmd")
+stretch_mode = 1
