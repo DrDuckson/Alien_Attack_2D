@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-var speed = 300
+var iSpeed = 300
+var iForce = 300
 var rocket_scene = preload("res://scenes/rocket.tscn")
 
 func _ready():
@@ -11,18 +12,33 @@ func _process(delta):
 		shoot_rocket()
 
 func _physics_process(delta):
-	velocity = Vector2(0,0)
+	#velocity = Vector2(0,0)
 	if Input.is_action_pressed("move_up"):
-		velocity.y = -speed
+		velocity.y = -iSpeed
 	if Input.is_action_pressed("move_down"):
-		velocity.y = speed
+		velocity.y = iSpeed
 	if Input.is_action_pressed("move_left"):
-		velocity.x = -speed
+		velocity.x = -iSpeed
 	if Input.is_action_pressed("move_right"):
-		velocity.x = speed
+		velocity.x = iSpeed
 		
-	move_and_slide()
 	
+	if Input.is_action_just_released("move_up"):
+		pass
+		velocity.y = -iSpeed*0.2
+	if Input.is_action_just_released("move_down"):
+		pass
+		velocity.y = iSpeed*0.2
+	if Input.is_action_just_released("move_left"):
+		pass
+		velocity.x = -iSpeed*0.2
+	if Input.is_action_just_released("move_right"):
+		pass
+		velocity.x = iSpeed*0.2
+		
+	move_and_slide()	
+	
+	print(global_position)
 	var screen_size = get_viewport_rect().size
 	# Begrenzung 1
 	#if global_position.x < 0:
