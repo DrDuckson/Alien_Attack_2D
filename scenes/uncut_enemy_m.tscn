@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvpx6vkskk0v8"]
+
+[ext_resource type="Texture2D" uid="uid://dhiivfgafjfi" path="res://assets/textures/EnemyM-removebg-preview.png" id="1_i8a3t"]
+[ext_resource type="Script" path="res://scripts/uncut_enemy_m.gd" id="1_pdxrc"]
+[ext_resource type="Texture2D" uid="uid://ciwwhah1g4tbh" path="res://assets/textures/MarlonUntersatz-removebg-preview.png" id="2_cdnv4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i5b8p"]
+radius = 20.0
+height = 94.0
+
+[node name="Uncut_EnemyM" type="Area2D"]
+script = ExtResource("1_pdxrc")
+
+[node name="EnemyM" type="Sprite2D" parent="."]
+position = Vector2(2, -32)
+scale = Vector2(0.187879, 0.187879)
+texture = ExtResource("1_i8a3t")
+
+[node name="Untersatz" type="Sprite2D" parent="."]
+position = Vector2(2, 32)
+rotation = -0.261799
+scale = Vector2(0.215212, 0.215212)
+texture = ExtResource("2_cdnv4")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, -11)
+shape = SubResource("CapsuleShape2D_i5b8p")
+
+[node name="Uncut_EnemyM_Visible_Notifier" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(19, 2.99999)
+scale = Vector2(1.5, 2.15)

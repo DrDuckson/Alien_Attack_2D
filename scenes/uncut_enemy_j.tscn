@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdw7w8h3op4b5"]
+
+[ext_resource type="Script" path="res://scripts/uncut_enemy_j.gd" id="1_hxh8q"]
+[ext_resource type="Texture2D" uid="uid://cujou8ceh5l15" path="res://assets/textures/ufoGreen.png" id="1_lige4"]
+[ext_resource type="Texture2D" uid="uid://ctktbrriq6f5s" path="res://assets/textures/Enemy_J.png" id="2_aai17"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bwmkl"]
+radius = 21.0
+height = 102.0
+
+[node name="Uncut_EnemyJ" type="Area2D"]
+script = ExtResource("1_hxh8q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3, 26)
+rotation = 0.261799
+scale = Vector2(0.601867, 0.601867)
+skew = 0.986111
+texture = ExtResource("1_lige4")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-6, -37)
+scale = Vector2(0.309398, 0.309398)
+texture = ExtResource("2_aai17")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(4, -14)
+shape = SubResource("CapsuleShape2D_bwmkl")
+
+[node name="EnemyJ_Visible_Notifier" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(29, -10)
+scale = Vector2(1.2, 3.725)
