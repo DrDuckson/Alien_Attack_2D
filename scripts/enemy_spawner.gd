@@ -30,6 +30,7 @@ func enemyPicker():
 		1: enemy_instance = spawnJ.instantiate()
 		2: enemy_instance = spawnK.instantiate()
 		3: enemy_instance = spawnM.instantiate()
+		#4: enemy_instance = enemy1.instantiate()
 
 func spawnPicker():
 	var spawn_positions_array = spawn_positions.get_children()
