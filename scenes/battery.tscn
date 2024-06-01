@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmxaac4n55pwv"]
+
+[ext_resource type="Script" path="res://scripts/battery.gd" id="1_tmttu"]
+[ext_resource type="Texture2D" uid="uid://duyx6a4wt4grv" path="res://assets/textures/battery_logo-removebg-preview.png" id="1_vsr6a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bke1b"]
+size = Vector2(15.5564, 23.3345)
+
+[node name="Battery" type="Area2D"]
+collision_layer = 16
+collision_mask = 13
+script = ExtResource("1_tmttu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -0.785398
+scale = Vector2(0.0583754, 0.0583754)
+texture = ExtResource("1_vsr6a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.750001, 0.75)
+rotation = 0.785398
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_bke1b")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
