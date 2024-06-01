@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+signal took_damage
+signal took_battery
+
 var iSpeed = 300
 var iForce = 300
 var rocket_scene = preload("res://scenes/rocket.tscn")
@@ -14,6 +17,15 @@ func _process(deldta):
 	if Input.is_action_just_pressed("shoot"):
 		shoot_rocket()
 
+func take_damage():
+	emit_signal("took_damage")
+	
+func heal():
+	emit_signal("took_battery")
+
+func die():
+	queue_free()
+	
 func _physics_process(delta):
 	#velocity = Vector2(0,0)
 	if Input.is_action_pressed("move_up"):
