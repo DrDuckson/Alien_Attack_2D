@@ -5,10 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://ctktbrriq6f5s" path="res://assets/textures/Enemy_J.png" id="2_aai17"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bwmkl"]
-radius = 21.0
+radius = 13.0
 height = 102.0
 
 [node name="Uncut_EnemyJ" type="Area2D"]
+collision_layer = 2
+collision_mask = 13
 script = ExtResource("1_hxh8q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -27,6 +29,4 @@ texture = ExtResource("2_aai17")
 position = Vector2(4, -14)
 shape = SubResource("CapsuleShape2D_bwmkl")
 
-[node name="EnemyJ_Visible_Notifier" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(29, -10)
-scale = Vector2(1.2, 3.725)
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

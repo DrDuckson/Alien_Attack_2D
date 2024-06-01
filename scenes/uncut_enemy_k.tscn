@@ -5,9 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://cj5oixmpysg6i" path="res://assets/textures/Unbenannt-removebg-preview.png" id="2_wxvpb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o3ihu"]
-radius = 34.0
+radius = 29.0
 
 [node name="uncut_enemy_K" type="Area2D"]
+collision_layer = 2
+collision_mask = 13
 script = ExtResource("1_a1bbx")
 
 [node name="UntersatzK" type="Sprite2D" parent="."]
@@ -25,6 +27,4 @@ texture = ExtResource("2_wxvpb")
 position = Vector2(11, -2)
 shape = SubResource("CircleShape2D_o3ihu")
 
-[node name="Uncut_EnemyK_Visible_Notifier" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(46, -2.38419e-07)
-scale = Vector2(1.34375, 2.75)
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
