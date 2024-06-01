@@ -1,36 +1,39 @@
-[gd_scene load_steps=6 format=3 uid="uid://cooljwmd0afw6"]
+[gd_scene load_steps=7 format=3 uid="uid://cooljwmd0afw6"]
 
-[ext_resource type="Texture2D" uid="uid://m7owkv3k60kt" path="res://assets/textures/bg.png" id="1_pvxvq"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_f4sn5"]
 [ext_resource type="PackedScene" uid="uid://dhcm6buuv3e7o" path="res://scenes/moving_background.tscn" id="2_ell2n"]
+[ext_resource type="PackedScene" uid="uid://bodlo1b5rlu2j" path="res://scenes/hud.tscn" id="2_k4akl"]
 [ext_resource type="PackedScene" uid="uid://by0fqmba1a2c0" path="res://scenes/player.tscn" id="2_q4vft"]
-[ext_resource type="PackedScene" uid="uid://c1jdovhno1ma2" path="res://scenes/enemy_1.tscn" id="4_h35y7"]
 [ext_resource type="PackedScene" uid="uid://dnit82vmky17u" path="res://scenes/enemy_spawner.tscn" id="8_iwnl4"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c6qqc"]
+size = Vector2(49, 657.5)
+
 [node name="Game" type="Node2D"]
+script = ExtResource("1_f4sn5")
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="HUD" parent="UI" instance=ExtResource("2_k4akl")]
 
 [node name="MovingBackground" parent="." instance=ExtResource("2_ell2n")]
-
-[node name="Background" type="TextureRect" parent="."]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -2.0
-offset_top = -2.0
-offset_right = 1154.0
-offset_bottom = 649.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_pvxvq")
-stretch_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("2_q4vft")]
 z_index = 10
 position = Vector2(101, 325)
 
-[node name="Enemy1" parent="." instance=ExtResource("4_h35y7")]
-visible = false
-z_index = 10
-position = Vector2(1133, 426)
-
 [node name="EnemySpawner" parent="." instance=ExtResource("8_iwnl4")]
+
+[node name="Deathzone" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="Deathzone_Collision_Shape" type="CollisionShape2D" parent="Deathzone"]
+position = Vector2(-125.5, 325.25)
+shape = SubResource("RectangleShape2D_c6qqc")
+
+[connection signal="took_battery" from="Player" to="." method="_on_player_took_battery"]
+[connection signal="took_damage" from="Player" to="." method="_on_player_took_damage"]
+[connection signal="enemy_spawned" from="EnemySpawner" to="." method="_on_enemy_spawner_enemy_spawned"]
+[connection signal="area_entered" from="Deathzone" to="." method="_on_deathzone_area_entered"]
