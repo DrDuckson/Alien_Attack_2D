@@ -1,0 +1,92 @@
+[gd_scene load_steps=5 format=3 uid="uid://cex357bc0x7ne"]
+
+[ext_resource type="FontFile" uid="uid://cdpig84cvy1ru" path="res://assets/font/Kenney Blocks.ttf" id="1_np8y1"]
+[ext_resource type="Script" path="res://scripts/rules.gd" id="1_u4wcn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_iarci"]
+font = ExtResource("1_np8y1")
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_1aoo1"]
+font_size = 30
+
+[node name="Rules" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u4wcn")
+
+[node name="pnlRules" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -578.0
+offset_top = -326.0
+offset_right = 578.0
+offset_bottom = 326.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="pnlRules"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -226.0
+offset_top = -336.0
+offset_right = 226.0
+offset_bottom = -158.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "RULES"
+label_settings = SubResource("LabelSettings_iarci")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="pnlRules"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -564.0
+offset_top = -99.0
+offset_right = 564.0
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "- Use WASD to move and spacebar to shoot.
+- Each destroyed enemy gives 100 points. 
+- Enemies that pass the left screen border or hit you cost 100 points and 1 life.
+- Missed shots cost 50 points.
+- Batteries can be picked up to get 1 life or shot to get 200 bonus points."
+label_settings = SubResource("LabelSettings_1aoo1")
+
+[node name="btnStart" type="Button" parent="pnlRules"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -146.0
+offset_top = -136.0
+offset_right = 146.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_np8y1")
+theme_override_font_sizes/font_size = 60
+text = "RESTART"
+
+[connection signal="pressed" from="pnlRules/btnStart" to="." method="_on_btn_start_pressed"]
