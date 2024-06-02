@@ -1,8 +1,35 @@
-[gd_scene load_steps=7 format=3 uid="uid://by0fqmba1a2c0"]
+[gd_scene load_steps=12 format=3 uid="uid://by0fqmba1a2c0"]
 
 [ext_resource type="Texture2D" uid="uid://cmad7mwnr32p7" path="res://assets/textures/player_ship.png" id="1_03636"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_lej0k"]
 [ext_resource type="Texture2D" uid="uid://bhlf3c14y5kgl" path="res://assets/textures/EVA_ENEMY-removebg-preview.png" id="3_vd48k"]
+
+[sub_resource type="Gradient" id="Gradient_n0ifs"]
+offsets = PackedFloat32Array(0, 0.532787, 0.97541)
+colors = PackedColorArray(1, 0.992157, 0, 0, 1, 0.356863, 0.152941, 1, 1, 0, 0.160784, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xtf02"]
+gradient = SubResource("Gradient_n0ifs")
+
+[sub_resource type="Curve" id="Curve_rpfwk"]
+_data = [Vector2(0.0133333, 0.285714), 0.0, 0.0, 0, 0, Vector2(1, 0.923077), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dkei7"]
+curve = SubResource("Curve_rpfwk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_87coe"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 10, 1)
+spread = 30.0
+initial_velocity_min = -200.0
+initial_velocity_max = -200.0
+gravity = Vector3(-98, 0, 98)
+scale_min = 5.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_dkei7")
+color_ramp = SubResource("GradientTexture1D_xtf02")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vm6e7"]
 radius = 17.0
@@ -20,6 +47,13 @@ z_index = 1
 collision_mask = 18
 motion_mode = 1
 script = ExtResource("1_lej0k")
+
+[node name="Flame_Particle_Effect" type="GPUParticles2D" parent="."]
+position = Vector2(-52, -14)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_87coe")
+lifetime = 0.3
+randomness = 1.0
 
 [node name="Player_Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -47,5 +81,5 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_v0sb1")
 
 [node name="Uncut_Player_CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-55, -21)
+position = Vector2(-56, -21)
 shape = SubResource("CircleShape2D_n4ero")
