@@ -1,5 +1,6 @@
 extends Area2D
 
+signal hit
 var speed = 200
 
 func _ready():
@@ -13,7 +14,8 @@ func _physics_process(delta):
 	
 func die():
 	queue_free()
+	emit_signal("hit")
 	
 func _on_body_entered(body):
 	body.heal()
-	die()
+	queue_free()
