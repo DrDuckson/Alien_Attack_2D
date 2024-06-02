@@ -2,13 +2,14 @@ extends CharacterBody2D
 
 signal took_damage
 signal took_battery
+signal rocked_missed(rocket_instance)
 
 var iSpeed = 300
 var iForce = 300
 var rocket_scene = preload("res://scenes/rocket.tscn")
+var rocket_instance
 
 @onready var rocket_container = $RocketContainer 
-# = get_node("RocketContainer")
 
 func _ready():
 	rocket_container = get_node("RocketContainer")
@@ -22,12 +23,11 @@ func take_damage():
 	
 func heal():
 	emit_signal("took_battery")
-
+	
 func die():
 	queue_free()
 	
 func _physics_process(delta):
-	#velocity = Vector2(0,0)
 	if Input.is_action_pressed("move_up"):
 		velocity.y = -iSpeed
 	if Input.is_action_pressed("move_down"):
@@ -36,7 +36,6 @@ func _physics_process(delta):
 		velocity.x = -iSpeed
 	if Input.is_action_pressed("move_right"):
 		velocity.x = iSpeed
-		
 	
 	if Input.is_action_just_released("move_up"):
 		velocity.y = -iSpeed*0.1
@@ -68,7 +67,11 @@ func _physics_process(delta):
 	global_position = global_position.clamp(Vector2(0,0), screen_size)
 	
 func shoot_rocket():
-	var rocket_instance = rocket_scene.instantiate()
+	rocket_instance = rocket_scene.instantiate()
 	rocket_container.add_child(rocket_instance)
 	rocket_instance.global_position = global_position
 	rocket_instance.global_position.x += 50
+	missed()
+
+func missed():
+	emit_signal("rocked_missed", rocket_instance)
