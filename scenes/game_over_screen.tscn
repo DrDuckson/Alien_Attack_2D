@@ -1,0 +1,94 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsh04ohdwsa84"]
+
+[ext_resource type="FontFile" uid="uid://cdpig84cvy1ru" path="res://assets/font/Kenney Blocks.ttf" id="1_dr5eq"]
+[ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_fvndv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_82ggk"]
+bg_color = Color(0.490196, 0.227451, 0.211765, 0.431373)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_mgnm0"]
+font = ExtResource("1_dr5eq")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_wkraq"]
+font = ExtResource("1_dr5eq")
+font_size = 30
+
+[node name="GameOverScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fvndv")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -331.5
+offset_top = -141.0
+offset_right = 331.5
+offset_bottom = 141.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_82ggk")
+
+[node name="lblGameOver" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = -119.5
+offset_right = 114.0
+offset_bottom = -64.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_mgnm0")
+
+[node name="lblScore" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "SCORE: 9999"
+label_settings = SubResource("LabelSettings_wkraq")
+
+[node name="btnRestart" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.5
+offset_top = 48.5
+offset_right = 41.5
+offset_bottom = 91.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_dr5eq")
+theme_override_font_sizes/font_size = 25
+text = "RESTART"
+
+[connection signal="pressed" from="Panel/btnRestart" to="." method="_on_btn_restart_pressed"]
