@@ -48,3 +48,13 @@ offset_right = 121.0
 offset_bottom = 85.0
 text = "3"
 label_settings = SubResource("LabelSettings_omuk7")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 211.0
+grow_vertical = 0
+text = "Press ESC to see the rules :)"
