@@ -17,6 +17,7 @@ func _ready():
 func _process(delta):
 	#if Input.is_action_just_pressed("shoot"):
 	#	shoot_rocket()
+	pass
 
 func take_damage():
 	emit_signal("took_damage")
@@ -29,7 +30,7 @@ func die():
 	
 func _physics_process(delta):
 	if Input.is_action_just_pressed("shoot"):
-	shoot_rocket()
+		shoot_rocket()
 	
 	if Input.is_action_pressed("move_up"):
 		velocity.y = -iSpeed
