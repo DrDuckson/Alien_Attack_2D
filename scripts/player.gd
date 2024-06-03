@@ -14,9 +14,9 @@ var rocket_instance
 func _ready():
 	rocket_container = get_node("RocketContainer")
 	
-func _process(deldta):
-	if Input.is_action_just_pressed("shoot"):
-		shoot_rocket()
+func _process(delta):
+	#if Input.is_action_just_pressed("shoot"):
+	#	shoot_rocket()
 
 func take_damage():
 	emit_signal("took_damage")
@@ -28,6 +28,9 @@ func die():
 	queue_free()
 	
 func _physics_process(delta):
+	if Input.is_action_just_pressed("shoot"):
+	shoot_rocket()
+	
 	if Input.is_action_pressed("move_up"):
 		velocity.y = -iSpeed
 	if Input.is_action_pressed("move_down"):
