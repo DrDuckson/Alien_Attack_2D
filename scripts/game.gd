@@ -32,7 +32,7 @@ func _on_player_took_damage():
 	hud.set_score_label(score)
 	hud.set_lives(lives)
 	player_hit_sound.play()
-	if (lives == 10):
+	if (lives == 0):
 		player.die()
 		await get_tree().create_timer(1).timeout
 		var gos = game_over_scene.instantiate()
