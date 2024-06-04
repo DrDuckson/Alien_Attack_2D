@@ -19,4 +19,4 @@ func die():
 
 func _on_body_entered(body):
 	body.take_damage()
-	die()
+	queue_free()
