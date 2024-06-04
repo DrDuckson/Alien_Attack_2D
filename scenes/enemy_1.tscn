@@ -1,14 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1jdovhno1ma2"]
+[gd_scene load_steps=4 format=3 uid="uid://c1jdovhno1ma2"]
 
 [ext_resource type="Script" path="res://scripts/enemy_1.gd" id="1_eqiuy"]
-[ext_resource type="Texture2D" uid="uid://d1u8lqrt7qsa7" path="res://assets/textures/enemy_ship.png" id="1_kfkdu"]
+[ext_resource type="Texture2D" uid="uid://dajie7vcy1b7y" path="res://assets/textures/bf05997289fb9297d35cb3ed1c3e7936-removebg-preview.png" id="2_hbls3"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4lsvb"]
-radius = 14.0
-height = 60.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_epntx"]
-radius = 11.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_rm8pl"]
+radius = 29.0689
 
 [node name="Enemy1" type="Area2D"]
 collision_layer = 2
@@ -16,25 +12,16 @@ collision_mask = 13
 script = ExtResource("1_eqiuy")
 
 [node name="Enemy1_Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(4.76837e-07, -9.53674e-07)
-rotation = -1.5708
-scale = Vector2(0.116888, 0.116888)
-texture = ExtResource("1_kfkdu")
+position = Vector2(1.90735e-06, 9.53674e-07)
+scale = Vector2(0.247867, 0.247867)
+texture = ExtResource("2_hbls3")
 flip_h = true
 
-[node name="Enemy1_CollisionS_Body" type="CollisionShape2D" parent="."]
-rotation = -1.5708
-shape = SubResource("CapsuleShape2D_4lsvb")
-
-[node name="Enemy1_CollisionS_Wing1" type="CollisionShape2D" parent="."]
-position = Vector2(8, -11)
-shape = SubResource("CircleShape2D_epntx")
-
-[node name="Enemy1_CollisionS_Wing2" type="CollisionShape2D" parent="."]
-position = Vector2(8, 11)
-shape = SubResource("CircleShape2D_epntx")
-
-[node name="Enemy1_Visible_Notifier" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(19, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 2
+visibility_layer = 13
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_rm8pl")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="died" from="." to="." method="_on_died"]
