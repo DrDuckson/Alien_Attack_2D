@@ -10,13 +10,12 @@ var rocket_scene = preload("res://scenes/rocket.tscn")
 var rocket_instance
 
 @onready var rocket_container = $RocketContainer 
+@onready var shooting_rocket = $shooting
 
 func _ready():
 	rocket_container = get_node("RocketContainer")
 	
 func _process(delta):
-	#if Input.is_action_just_pressed("shoot"):
-	#	shoot_rocket()
 	pass
 
 func take_damage():
@@ -31,6 +30,7 @@ func die():
 func _physics_process(delta):
 	if Input.is_action_just_pressed("shoot"):
 		shoot_rocket()
+		shooting_rocket.play()
 	
 	if Input.is_action_pressed("move_up"):
 		velocity.y = -iSpeed
