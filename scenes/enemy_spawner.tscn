@@ -32,8 +32,13 @@ position = Vector2(1250, 560)
 [node name="SpawnPos_08" type="Marker2D" parent="Spawnpositions"]
 position = Vector2(1250, 630)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer_NormalEnemy" type="Timer" parent="."]
 wait_time = 1.2
 autostart = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="TimerPath" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer_NormalEnemy" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TimerPath" to="." method="_on_timer_2_timeout"]
