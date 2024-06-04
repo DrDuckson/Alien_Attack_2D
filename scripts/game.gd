@@ -8,6 +8,8 @@ var rules
 @onready var player = $Player
 @onready var hud = $UI/HUD
 @onready var ui = $UI
+@onready var enemy_hit_sound =$Enemy_Hit_Sound
+@onready var player_hit_sound = $Player_Hit_Sound
 
 func _ready():
 	hud.set_score_label(score)
@@ -21,15 +23,16 @@ func _process(delta):
 	pass
 	
 func _on_deathzone_area_entered(area):
-	area.die()
+	area.queue_free()
 	_on_player_took_damage()
 
 func _on_player_took_damage():
 	lives -= 1
-	score -= 200
+	score -= 100
 	hud.set_score_label(score)
 	hud.set_lives(lives)
-	if (lives == 0):
+	player_hit_sound.play()
+	if (lives == 10):
 		player.die()
 		await get_tree().create_timer(1).timeout
 		var gos = game_over_scene.instantiate()
@@ -49,14 +52,20 @@ func _on_enemy_spawner_enemy_spawned(enemy_instance):
 func _on_battery_hit():
 	score += 200
 	hud.set_score_label(score)
+	enemy_hit_sound.play()
 
 func _on_enemy_died():
 	score += 100
 	hud.set_score_label(score)
+	enemy_hit_sound.play()
 
 func _on_player_rocked_missed(rocket_instance):
 	rocket_instance.connect("missed_shot", _on_missed_shot)
-	
+
 func _on_missed_shot():	
 	score -= 50
 	hud.set_score_label(score)
+
+func _on_enemy_spawner_path_enemy_signal(path_enemy_instance):
+	add_child(path_enemy_instance)
+	path_enemy_instance.enemy.connect("died", _on_enemy_died)
