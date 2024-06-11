@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://by0fqmba1a2c0"]
+[gd_scene load_steps=11 format=3 uid="uid://by0fqmba1a2c0"]
 
 [ext_resource type="Texture2D" uid="uid://cmad7mwnr32p7" path="res://assets/textures/player_ship.png" id="1_03636"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_lej0k"]
-[ext_resource type="Texture2D" uid="uid://bhlf3c14y5kgl" path="res://assets/textures/EVA_ENEMY-removebg-preview.png" id="3_vd48k"]
 [ext_resource type="AudioStream" uid="uid://djqqhx4gh0vva" path="res://assets/audio/sfx_laser2.wav" id="4_ruxjt"]
 
 [sub_resource type="Gradient" id="Gradient_n0ifs"]
@@ -36,12 +35,8 @@ color_ramp = SubResource("GradientTexture1D_xtf02")
 radius = 17.0
 height = 58.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v0sb1"]
-radius = 9.0
-height = 70.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_n4ero"]
-radius = 18.4391
+radius = 28.0179
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
@@ -50,7 +45,7 @@ motion_mode = 1
 script = ExtResource("1_lej0k")
 
 [node name="Flame_Particle_Effect" type="GPUParticles2D" parent="."]
-position = Vector2(-52, -14)
+position = Vector2(-16, 0)
 amount = 100
 process_material = SubResource("ParticleProcessMaterial_87coe")
 lifetime = 0.3
@@ -71,18 +66,12 @@ shape = SubResource("CapsuleShape2D_vm6e7")
 [node name="RocketContainer" type="Node" parent="."]
 
 [node name="Uncut_Player_Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2.38419e-07, -20)
-rotation = 0.0214017
+rotation = 1.57079
 scale = Vector2(0.14136, 0.14136)
-texture = ExtResource("3_vd48k")
-
-[node name="Uncut_Player_CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -11)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_v0sb1")
+texture = ExtResource("1_03636")
 
 [node name="Uncut_Player_CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-56, -21)
+position = Vector2(-1, 0)
 shape = SubResource("CircleShape2D_n4ero")
 
 [node name="shooting" type="AudioStreamPlayer2D" parent="."]
