@@ -87,6 +87,6 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_np8y1")
 theme_override_font_sizes/font_size = 60
-text = "RESTART"
+text = "START"
 
 [connection signal="pressed" from="pnlRules/btnStart" to="." method="_on_btn_start_pressed"]
