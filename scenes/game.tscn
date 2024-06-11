@@ -23,7 +23,7 @@ layer = 10
 
 [node name="Player" parent="." instance=ExtResource("2_q4vft")]
 z_index = 10
-position = Vector2(101, 325)
+position = Vector2(123, 338)
 scale = Vector2(1, 0.997144)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("8_iwnl4")]

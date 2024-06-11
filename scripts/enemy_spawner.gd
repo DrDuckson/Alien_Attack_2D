@@ -20,7 +20,6 @@ func _on_timer_timeout():
 func spawn_enemy():
 	enemyPicker()
 	battery_Spawn()
-	#pathEnemy_Spawn()
 	if enemy_instance:
 		spawnPicker()
 		emit_signal("enemy_spawned", enemy_instance)
