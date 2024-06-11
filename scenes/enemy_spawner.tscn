@@ -37,7 +37,7 @@ wait_time = 1.2
 autostart = true
 
 [node name="TimerPath" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 15.0
 autostart = true
 
 [connection signal="timeout" from="Timer_NormalEnemy" to="." method="_on_timer_timeout"]
